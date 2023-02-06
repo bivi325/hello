@@ -1,5 +1,3 @@
 ================
-Documentation 
+Documentation
 ================
-
-.. admonition:: text
