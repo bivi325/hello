@@ -6,7 +6,7 @@ authors = ["denys.havryliv <denys.havryliv@gmail.com>"]
 
 [tool.semantic_release]
 version_variable = [
-    "src_folder/__init__.py:__version__",
+    "hello/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "main"
