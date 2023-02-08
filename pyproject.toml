@@ -10,7 +10,7 @@ version = "0.1.1"
 tag_format = "v$version"
 update_changelog_on_bump = true
 version_files = [
-    "hello/__init__.py:version"
+    "hello/__init__.py:version",
     "pyproject.toml:^version"
 ]
 
