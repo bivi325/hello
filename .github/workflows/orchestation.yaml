@@ -18,5 +18,5 @@ jobs:
     needs:
       - call-testing-pipeline
       - call-linting-pipeline
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/release.yaml
     secrets: inherit
