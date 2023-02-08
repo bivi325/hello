@@ -9,10 +9,10 @@ on:
 jobs:
   call-testing-pipeline:
     name: Testing
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/test.yaml
   call-linting-pipeline:
     name: Linting
-    uses: ./.github/workflows/lint.yml
+    uses: ./.github/workflows/lint.yaml
   call-release-pipeline:
     name: Release
     needs:
