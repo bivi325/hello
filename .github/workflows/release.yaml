@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    if: "!startsWith(github.event.head_commit.message, 'bump:') && github.ref == 'refs/heads/master'"
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
     strategy:
       matrix:
         python-version: [3.8]
