@@ -1,0 +1,33 @@
+name: bump
+
+on:
+  workflow_run:
+    workflows: [Testing, Linting]
+    types:
+    - completed
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  release:
+    if: "!startsWith(github.event.head_commit.message, 'bump:') && github.ref == 'refs/heads/master'"
+    strategy:
+      matrix:
+        python-version: [3.8]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
+      - id: cz
+        name: Create bump and changelog
+        uses: commitizen-tools/commitizen-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
+
+      - name: Print Version
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"

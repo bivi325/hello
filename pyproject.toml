@@ -4,6 +4,24 @@ version = "0.1.1"
 description = ""
 authors = ["denys.havryliv <denys.havryliv@gmail.com>"]
 
+[tool.commitizen]
+name = "cz_customize"
+version = "0.1.1"
+tag_format = "v$version"
+update_changelog_on_bump = true
+version_files = [
+    "hello/__init__.py:version"
+    "pyproject.toml:^version",
+]
+
+[tool.commitizen.customize]
+message_template = "{{change_type}}:{% if show_message %} {{message}}{% endif %}"
+example = "feature: this feature enable customize through config file"
+schema = "<type>: <body>"
+bump_pattern = "^(major|minor|patch|hotfix)"
+bump_map = {"major" = "MAJOR", "minor" = "MINOR", "patch" = "PATCH", "hotfix" = "PATCH"}
+
+
 [tool.poetry.dependencies]
 python = "^3.8.10"
 typer = {extras = ["all"], version = "^0.7.0"}
@@ -20,21 +38,8 @@ mypy = "^0.991"
 flake8 = "^6.0.0"
 isort = "^5.12.0"
 
-
 [tool.poetry.group.semver.dependencies]
-python-semantic-release = "^7.33.1"
-
-[tool.semantic_release]
-version_variable = "hello/__init__.py:__version__"
-version_toml = "pyproject.toml:tool.poetry.version"
-branch = "main"
-upload_to_pypi = false
-upload_to_release = false
-version_source = "tag"
-commit_version_number = true # required for version_source = "tag"
-tag_commit = true
-hvcs = "github" # gitlab is also supported
-build_command = "pip install poetry && poetry build"
+commitizen = "^2.41.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
