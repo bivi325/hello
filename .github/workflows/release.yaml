@@ -1,13 +1,8 @@
 name: bump
 
 on:
-  workflow_run:
-    workflows: [Testing, Linting]
-    types:
-    - completed
+  workflow_call:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   release:
