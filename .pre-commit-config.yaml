@@ -17,3 +17,10 @@ repos:
     rev: '6.0.0'
     hooks:
     -   id: flake8
+
+-   repo: https://github.com/commitizen-tools/commitizen
+    rev: master
+    hooks:
+    -   id: commitizen
+    -   id: commitizen-branch
+        stages: [push]

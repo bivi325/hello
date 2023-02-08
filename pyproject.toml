@@ -4,25 +4,42 @@ version = "0.1.1"
 description = ""
 authors = ["denys.havryliv <denys.havryliv@gmail.com>"]
 
-[tool.semantic_release]
-version_variable = [
-    "hello/__init__.py:__version__",
-    "pyproject.toml:version"
+[tool.commitizen]
+name = "cz_customize"
+version = "0.1.1"
+tag_format = "v$version"
+update_changelog_on_bump = true
+version_files = [
+    "hello/__init__.py:version",
+    "pyproject.toml:^version"
 ]
-branch = "main"
-upload_to_pypi = false
-upload_to_release = false
-build_command = "pip install poetry && poetry build"
+
+[tool.commitizen.customize]
+message_template = "{{change_type}}:{% if show_message %} {{message}}{% endif %}"
+example = "feature: this feature enable customize through config file"
+schema = "<type>: <body>"
+bump_pattern = "^(major|minor|patch|hotfix)"
+bump_map = {"major" = "MAJOR", "minor" = "MINOR", "patch" = "PATCH", "hotfix" = "PATCH"}
+
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8.10"
 typer = {extras = ["all"], version = "^0.7.0"}
 
 [tool.poetry.dev-dependencies]
-pytest = "5.2"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.3"
+
+[tool.poetry.group.lint.dependencies]
 black = "^23.1.0"
 pre-commit = "^3.0.3"
 mypy = "^0.991"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+
+[tool.poetry.group.semver.dependencies]
+commitizen = "^2.41.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
