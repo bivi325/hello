@@ -11,7 +11,7 @@ tag_format = "v$version"
 update_changelog_on_bump = true
 version_files = [
     "hello/__init__.py:version"
-    "pyproject.toml:^version",
+    "pyproject.toml:^version"
 ]
 
 [tool.commitizen.customize]
